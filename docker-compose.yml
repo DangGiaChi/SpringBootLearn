@@ -1,0 +1,29 @@
+# Copyright Broadcom, Inc. All Rights Reserved.
+# SPDX-License-Identifier: APACHE-2.0
+
+services:
+  db:
+    container_name: postgres
+    image: docker.io/bitnami/postgresql:17
+    ports:
+      - '5432:5432'
+    environment:
+      # POSTGRES_USER: Albee
+      # # - POSTGRES_PASSWORD: WhatisPostGredoingwithSpringJava@4790+=
+      # POSTGRES_PASSWORD: ehLlo
+      # # ALLOW_EMPTY_PASSWORD: yes
+      POSTGRESQL_USERNAME: Albee
+      POSTGRESQL_PASSWORD: WhatisPostGredoingwithSpringJava@4790+=
+      POSTGRESQL_DATABASE: customer
+    volumes:
+      - db:/bitnami/postgresql
+    networks: 
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
